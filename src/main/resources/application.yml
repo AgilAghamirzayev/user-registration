@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: ${APP_NAME:user-registration}
+
+  jpa:
+    show-sql: true
+
+  datasource:
+    url: ${DATASOURCE_URL:jdbc:h2:mem:user}
+    driver-class-name: ${DATASOURCE_DRIVER:org.h2.Driver}
+    username: ${DATASOURCE_USERNAME:root}
+    password: ${DATASOURCE_PASSWORD:root}
+
+  liquibase:
+    change-log: classpath:db/changelog/master.xml
+    url: jdbc:h2:mem:user
+    user: root
+    password: root
+
+  h2:
+    console:
+      enabled: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: aqilzeka9@gmail.com
+    password: rbmlrquffprliihg
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+jwt:
+  secret: ${JWT_SECRET:sectert_jwt}
+  expired: ${JWT_EXPIRED:3600000}
+
+springdoc:
+  api-docs:
+    path: /api-docs
+
+  swagger-ui:
+    path: /swagger-ui-custom.html
+    operationsSorter: method
